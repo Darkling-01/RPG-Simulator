@@ -7,4 +7,19 @@ public:
     virtual int get_defense_bonus() = 0;
 };
 
+//intended for boss
+class Sythe : public Equip{
+    
+};
+
+//intended for player
+class fireSword : public Equip{
+
+};
+
+class Sword : public Equip{
+
+};
+
+
 #endif
