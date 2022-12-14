@@ -24,6 +24,23 @@ public:
     int get_hp() {
         return hp;
     }
+
 };
+
+
+
+class Player : public Character{
+public:
+    void equip(Equip* equipment){
+	int atk = 0;
+	
+    }
+};
+
+class Boss : public Character{
+public:
+    
+};
+
 
 #endif
