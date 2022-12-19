@@ -2,6 +2,10 @@
 #define CHARACTER_H
 
 #include "equip.hpp"
+#include <iostream>
+
+int get_attack_bonus();
+int get defense_bonus();
 
 class Character {
     int atk;
@@ -28,18 +32,24 @@ public:
 };
 
 
-
+//testing player
 class Player : public Character{
 public:
-    void equip(Equip* equipment){
-	int atk = 0;
-	
+    virtual void equip(Equip* equipment){
+	//code here
+    }
+    virtual void attack(Character* target){
+	int damage = get_attack_bonus();
+	std::cout << "Damage done = " << damage << std::endl;
     }
 };
 
 class Boss : public Character{
 public:
-    
+    virtual void attack(Character* target){
+
+    }    
+
 };
 
 
