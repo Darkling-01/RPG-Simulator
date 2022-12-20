@@ -5,7 +5,7 @@
 #include <iostream>
 
 int get_attack_bonus();
-int get defense_bonus();
+int get_defense_bonus();
 
 class Character {
     int atk;
@@ -39,15 +39,26 @@ public:
 	//code here
     }
     virtual void attack(Character* target){
+	bool enemy = target;
 	int damage = get_attack_bonus();
-	std::cout << "Damage done = " << damage << std::endl;
+	std::cout << "Damage done = " << damage << std::endl;  //test
+
+	if(enemy == true){
+	  
+	}
+
     }
 };
 
 class Boss : public Character{
 public:
+    //Boss already has weapon equip
+    virtual void equip(Equip* equipment){
+	//code here
+    }
     virtual void attack(Character* target){
-
+	bool enemy = target;
+	int damage = get_attack_bonus();
     }    
 
 };

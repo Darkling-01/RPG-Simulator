@@ -14,7 +14,6 @@ class Staff : public Equip{
 public :
         int get_attack_bonus(){
            int atk = 5;
-           std::cout << "damage: " << atk << std::endl;
            return atk;
 	}
 	int get_defense_bonus(){
@@ -61,7 +60,7 @@ public:
 };
 
 //intended for boss
-class boss : public Equip{
+class sythe : public Equip{
 public:
 	int get_attack_bonus(){
 	    int atk = 28;
