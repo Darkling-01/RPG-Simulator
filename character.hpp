@@ -20,13 +20,22 @@ public:
     int get_attack() {
         return atk;
     }
+    void set_attack(int atk){
+	atk = atk;
+    }
 
     int get_defense() {
         return def;
     }
+    void set_defense(int def){
+	def = def;
+    }
 
     int get_hp() {
         return hp;
+    }
+    void set_hp(int hp){
+	hp = hp;
     }
 
 };
@@ -39,12 +48,14 @@ public:
 	//code here
     }
     virtual void attack(Character* target){
+	
 	bool enemy = target;
-	int damage = get_attack_bonus();
-	std::cout << "Damage done = " << damage << std::endl;  //test
+	set_attack(get_attack_bonus());
+	set_hp(100);
+	std::cout << "Attack done = " << get_attack() << std::endl;  //test
 
 	if(enemy == true){
-	  
+	 // hp = hp - atk;
 	}
 
     }
@@ -57,8 +68,10 @@ public:
 	//code here
     }
     virtual void attack(Character* target){
+	
 	bool enemy = target;
-	int damage = get_attack_bonus();
+	set_attack(get_attack_bonus());
+	set_hp(250);
     }    
 
 };
