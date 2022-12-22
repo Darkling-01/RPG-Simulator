@@ -48,14 +48,16 @@ public:
 	//code here
     }
     virtual void attack(Character* target){
-	
+	//bool enemy = target.. must be fixed..
 	bool enemy = target;
+	int updateHealth;
 	set_attack(get_attack_bonus());
 	set_hp(100);
 	std::cout << "Attack done = " << get_attack() << std::endl;  //test
-
+	//change if statement to when player attacks boss it will return true...
+	//parameters make no sense..
 	if(enemy == true){
-	 // hp = hp - atk;
+	   updateHealth = get_hp() - get_attack();
 	}
 
     }
