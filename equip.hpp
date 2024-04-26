@@ -13,7 +13,7 @@ public:
 class Staff : public Equip{
 public :
         int get_attack_bonus(){
-           int atk = 5;
+           int atk = 15;
            return atk;
 	}
 	int get_defense_bonus(){
@@ -25,7 +25,7 @@ public :
 class Book_Spells : public Equip{
 public:
 	int get_attack_bonus(){
-	    int atk = 6;
+	    int atk = 16;
 	    return atk;
 	}
 	int get_defense_bonus(){

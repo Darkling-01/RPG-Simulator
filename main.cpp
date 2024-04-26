@@ -19,7 +19,7 @@ int main() {
     Equip* shield = new Shield();
     Equip* sword = new Sword();
 
-    LOG("Welcome to the RPG Sim.")
+    LOG("Welcome to the RPG Simulator.")
     LOG("Choose your class")
     LOG("1 - Mage \n2 - Healer \n3 - Tank \n4 - Warrior")
 
@@ -28,7 +28,7 @@ int main() {
     switch(rpg_Class){
         case 1:
             LOG("Available Weapon: \nStaff")
-            staff -> get_attack_bonus();
+            std::cout << "Damage: " <<staff -> get_attack_bonus() << std::endl;
             break;
         case 2:
             LOG("Available Weapon: \nBook of Spells")
