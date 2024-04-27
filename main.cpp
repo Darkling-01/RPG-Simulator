@@ -43,13 +43,26 @@ public:
 
       }
       else{return 0;}
-    }
-    
- 
+     }
+
 };
 
 
-void characterClass(int rpg_class){
+class Player::player{
+private:
+
+
+public:
+
+    bool weapon(string ){
+     //if weapon is equip
+    }
+
+};
+
+
+
+void Player::characterClass(int rpg_class){
     Staff* staff = new Staff();
     Book_Spells* book_spells = new Book_Spells();
     Sword* sword = new Sword();    
