@@ -5,70 +5,59 @@
 
 class Equip {
 public:
-    virtual int get_attack_bonus() = 0;		//pure virtual function
-    virtual int get_defense_bonus() = 0;	//pure virtual function
+    virtual int get_attack_bonus() const = 0;		//pure virtual function
+    virtual int get_defense_bonus() const = 0;	//pure virtual function
 };
 
 //intended for player
 class Staff : public Equip{
 public :
-        int get_attack_bonus(){
-           int atk = 15;
-           return atk;
+        int get_attack_bonus() const override{
+           return 15;
 	}
-	int get_defense_bonus(){
-	   int def = 16;
-	   return def;
+	int get_defense_bonus() const override{
+	   return 16;
 	}
 };
 
 class Book_Spells : public Equip{
 public:
-	int get_attack_bonus(){
-	    int atk = 16;
-	    return atk;
+	int get_attack_bonus() const override{
+	    return 16;
 	}
-	int get_defense_bonus(){
-	    int def = 15;
-	    return def;
+	int get_defense_bonus() const override{
+	    return 15;
 	}
 };
 
 class Shield : public Equip{
 public:
-	int get_attack_bonus(){
-
-	    int atk = 13;
-	    return atk;
+	int get_attack_bonus() const override{
+	    return 13;
 	}
-	int get_defense_bonus(){
-	    int def = 30;
-	    return def;
+	int get_defense_bonus() const override{
+	    return 30;
 	}
 };
 
 class Sword : public Equip{
 public:
-	int get_attack_bonus(){
-	    int atk = 27;
-	    return atk;
+	int get_attack_bonus() const override{
+	    return 27;
 	}
-	int get_defense_bonus(){
-	    int def = 18;
-	    return def;
+	int get_defense_bonus() const override{
+	    return 18;
 	}
 };
 
 //intended for boss
 class sythe : public Equip{
 public:
-	int get_attack_bonus(){
-	    int atk = 28;
-	    return atk;
+	int get_attack_bonus() const override{
+	    return 28;
 	}
-	int get_defense_bonus(){
-	    int def = 24;
-	    return def;
+	int get_defense_bonus() const override{
+	    return 24;
 	}
 
 };

@@ -9,6 +9,8 @@ int get_defense_bonus();
 
 
 class Character {
+
+private:
     int atk;
     int def;
     int hp;

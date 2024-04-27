@@ -10,37 +10,88 @@
 
 #define LOG(x) std::cout << x << std::endl;
 
-int main() {
+using std::cout;
+using std::endl;
 
-    int rpg_Class;
 
-    Equip* staff = new Staff();
-    Equip* book_spells = new Book_Spells();
-    Equip* shield = new Shield();
-    Equip* sword = new Sword();
+class Menu{
+private:
+   
+    Equip* equip;   //declare a pointer to equip
 
-    LOG("Welcome to the RPG Simulator.")
-    LOG("Choose your class")
-    LOG("1 - Mage \n2 - Healer \n3 - Tank \n4 - Warrior")
-
-    std::cin >> rpg_Class;
-
-    switch(rpg_Class){
-        case 1:
-            LOG("Available Weapon: \nStaff")
-            std::cout << "Damage: " <<staff -> get_attack_bonus() << std::endl;
-            break;
-        case 2:
-            LOG("Available Weapon: \nBook of Spells")
-            break;
-        case 3:
-            LOG("Available Weapon: \nShield")
-            break;
-        case 4:
-            LOG("Available Weapon: \nSword")
-            break;
-        default:
-            break;
+public:
+    // contructor initializes the equip pointer
+    Menu(Equip* item) : equip(item) {}
+    
+    //descontructor deletes dynamically allocated memory. Prevents memory leaks
+    ~Menu() {
+	delete equip;
      }
 
+    int item_bonus() const{
+      // check if equip is valid before accessing member
+      if(equip){
+        return equip->get_attack_bonus();
+       }
+      else{return 0;}  // or handles the situation differently
+    
+     }
+
+    int item_defense() const{
+      if(equip){
+	return equip->get_defense_bonus();
+
+      }
+      else{return 0;}
+    }
+    
+ 
+};
+
+
+void characterClass(int rpg_class){
+    Staff* staff = new Staff();
+    Book_Spells* book_spells = new Book_Spells();
+    Sword* sword = new Sword();    
+    Shield* shield = new Shield();
+
+    Menu staff_menu(staff);
+    Menu book_menu(book_spells);
+    Menu sword_menu(sword);
+    Menu shield_menu(shield);
+
+
+    switch(rpg_class){
+      case 1:
+	cout << "Staff (DPS:" << staff_menu.item_bonus() << " DEF:" << staff_menu.item_defense() << ")" << endl;
+        break;
+      case 2:
+        cout << "Book of Spells (DPS:" << book_menu.item_bonus() << " DEF:" << book_menu.item_defense() << ")" << endl;
+	break; 
+      case 3:
+	cout << "Sword (DPS:" << sword_menu.item_bonus() << " DEF:" << sword_menu.item_defense() << ")" << endl;
+	break;
+      case 4:
+	cout << "Shield (DPS:" << shield_menu.item_bonus() << " DEF:" << shield_menu.item_defense() << ")" << endl;
+	break;
+      default:
+        LOG("Wrong Input")
+	break;
+    }
+}
+
+
+
+
+int main() 
+{      
+    int rpg_class;
+    
+    LOG("WELCOME TO RPG-SIMULATOR")
+    LOG("Choose a Weapon:\n1 - Staff\n2 - Book Of Spells\n3 - Sword\n4 - Shield")
+    std::cin >> rpg_class;
+    
+    characterClass(rpg_class);
+
+    return 0;
 }
