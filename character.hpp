@@ -8,6 +8,7 @@ int get_attack_bonus();
 int get_defense_bonus();
 
 
+
 class Character {
 
 private:
@@ -49,6 +50,7 @@ public:
 
 class Player : public Character{
 public:
+
     virtual void equip(Equip* equipment){
 	//code here
     }
@@ -69,7 +71,6 @@ public:
 
     }
 };
-
 
 
 class Boss : public Character{

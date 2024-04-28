@@ -2,7 +2,6 @@
 #include <string>
 #include <new>
 
-//headers
 #include "character.hpp"
 #include "equip.hpp"
 #include "main.cpp"
