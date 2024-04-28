@@ -96,8 +96,9 @@ void characterClass(){
     }while(changeInput == 'Y' || changeInput == 'y');
 
     if(changeInput == 'N' || changeInput == 'n'){
-	LOG("let game begin!")
-    }
+	//code here to play game with equpiment
+        
+    }else{LOG("Invalid Input")}      
 
 }
 

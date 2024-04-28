@@ -73,6 +73,19 @@ public:
 };
 
 
+class Equipable : Character{
+
+private:
+
+
+public:
+ 
+    
+
+
+};
+
+
 class Boss : public Character{
 
 public:
