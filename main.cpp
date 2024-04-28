@@ -1,9 +1,13 @@
 #include <iostream>
 #include <string>
 #include <new>
+#include <filesystem>
+
 
 #include "character.hpp"
 #include "equip.hpp"
+
+
 
 
 //macros
@@ -50,7 +54,10 @@ public:
 };
 
 
-void characterClass(int rpg_class){
+void characterClass(){
+    int response;
+    char changeInput;
+
     Staff* staff = new Staff();
     Book_Spells* book_spells = new Book_Spells();
     Sword* sword = new Sword();    
@@ -60,10 +67,14 @@ void characterClass(int rpg_class){
     Menu book_menu(book_spells);
     Menu sword_menu(sword);
     Menu shield_menu(shield);
-    
-    
-    do{
-    switch(rpg_class){
+
+
+    do{ 
+    LOG("Choose Your Class")
+    LOG("1 - Staff\n2 - Book of Spells\n3 - Sword\n4 - Shield")   
+    std::cin >> response;
+
+    switch(response){
       case 1:
 	cout << "Staff (DPS:" << staff_menu.item_bonus() << " DEF:" << staff_menu.item_defense() << ")" << endl; 
 	break;
@@ -79,22 +90,42 @@ void characterClass(int rpg_class){
       default:
         LOG("Wrong Input")
 	break;
+      }
+     LOG("Do you want to pick a differnt class?(Y/N)")
+     std::cin >> changeInput;
+    }while(changeInput == 'Y' || changeInput == 'y');
+
+    if(changeInput == 'N' || changeInput == 'n'){
+	LOG("let game begin!")
     }
+
+}
+
+void gameStory(){
+   
+
 }
 
 
-
-
 int main() 
-{      
+{  
     int rpg_class;
-
-    do{
-    LOG("WELCOME TO RPG-SIMULATOR")
-    LOG("Choose a Weapon:\n1 - Game\n2 - Story\n3 - Exit\n")
-    std::cin >> rpg_class;
     
-    characterClass(rpg_class);
-    } while(rpg_class == 'Y' || rpg_class == 'y');
+    
+    LOG("WELCOME TO RPG-SIMULATOR")
+    LOG("Options:\n1 - Game\n2 - Story\n3 - Exit\n")
+    std::cin >> rpg_class;
+       
+    switch(rpg_class){
+      case 1:
+	characterClass();
+	break;
+      case 2:
+	gameStory();
+	break;
+      case 3:
+	exit(0);
+     }
+    
     return 0;
 }
