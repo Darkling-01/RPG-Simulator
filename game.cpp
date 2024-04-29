@@ -4,7 +4,6 @@
 
 #include "character.hpp"
 #include "equip.hpp"
-#include "main.cpp"
 
 
 using std::cout;
@@ -22,6 +21,13 @@ void dungeonDirection(string right, string left){
 
 int fight(){
     // when enemy found, player can fight or run away...
+
+}
+
+
+void playGame(){
+cout << "game!!" << endl;
+
 
 }
 

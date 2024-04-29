@@ -51,8 +51,8 @@ public:
 class Player : public Character{
 public:
 
-    virtual void equip(Equip* equipment){
-	//code here
+    virtual void equip(Equip* equipment) override{
+	
     }
     virtual void attack(Character* target){
 
@@ -64,26 +64,14 @@ public:
 	set_hp(100);
 
 	//change if statement to when player attacks boss it will return true...
-	//parameters make no sense..
 	if(enemy == true){
 	   updateHealth = get_hp() - get_attack();
 	}
 
     }
-};
-
-
-class Equipable : Character{
-
-private:
-
-
-public:
- 
-    
-
 
 };
+
 
 
 class Boss : public Character{

@@ -1,18 +1,19 @@
 #include <iostream>
 #include <string>
 #include <new>
-#include <filesystem>
+#include <fstream>
 
 
 #include "character.hpp"
 #include "equip.hpp"
-
+#include "game.cpp"
 
 
 
 //macros
 
 #define LOG(x) std::cout << x << std::endl;
+
 
 using std::cout;
 using std::endl;
@@ -55,6 +56,7 @@ public:
 
 
 void characterClass(){
+    
     int response;
     char changeInput;
 
@@ -88,7 +90,7 @@ void characterClass(){
 	cout << "Shield (DPS:" << shield_menu.item_bonus() << " DEF:" << shield_menu.item_defense() << ")" << endl;
 	break;
       default:
-        LOG("Wrong Input")
+        LOG("Invalid Input")
 	break;
       }
      LOG("Do you want to pick a differnt class?(Y/N)")
@@ -96,14 +98,26 @@ void characterClass(){
     }while(changeInput == 'Y' || changeInput == 'y');
 
     if(changeInput == 'N' || changeInput == 'n'){
-	//code here to play game with equpiment
-        
+	// 'playGame()' comes from game.cpp
+	playGame();
     }else{LOG("Invalid Input")}      
 
 }
 
+
 void gameStory(){
-   
+   // open the file "story.txt" for reading
+   std::ifstream inputFile("story.txt");
+
+   // variable to store each line from the file
+   string line;
+
+   while(std::getline(inputFile, line)){
+
+      cout << line << endl;
+    }
+
+  inputFile.close();
 
 }
 
