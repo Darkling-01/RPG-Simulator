@@ -49,23 +49,25 @@ public:
 
 
 class Player : public Character{
+
+private:
+    Equip* currentEquipment;
+
+
 public:
 
     virtual void equip(Equip* equipment) override{
-	
+	set_attack(currentEquipment->get_attack_bonus());
+        set_defense(currentEquipment->get_defense_bonus());
     }
-    virtual void attack(Character* target){
 
-	//bool enemy = target.. must be fixed..
-	bool enemy = target;
-	
-        int updateHealth;
-	set_attack(get_attack_bonus());
-	set_hp(100);
+    virtual void attack(character* target) override{
+	bool enemy;  // logic to determine if target is enemy
 
-	//change if statement to when player attacks boss it will return true...
-	if(enemy == true){
-	   updateHealth = get_hp() - get_attack();
+	if(enemy){
+	   int updateHealth = target->get_hp() - get_attack();
+	   // apply damage to target
+	   target->set_hp(updateHealth);
 	}
 
     }

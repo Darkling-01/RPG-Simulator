@@ -56,7 +56,9 @@ public:
 
 
 void characterClass(){
-    
+
+    Player player;
+
     int response;
     char changeInput;
 
@@ -71,23 +73,29 @@ void characterClass(){
     Menu shield_menu(shield);
 
 
+    Equip* chosenWeapon = nullptr;
+
     do{ 
     LOG("Choose Your Class")
     LOG("1 - Staff\n2 - Book of Spells\n3 - Sword\n4 - Shield")   
     std::cin >> response;
-
+    
     switch(response){
       case 1:
-	cout << "Staff (DPS:" << staff_menu.item_bonus() << " DEF:" << staff_menu.item_defense() << ")" << endl; 
+	cout << "Staff (DPS:" << staff_menu.item_bonus() << " DEF:" << staff_menu.item_defense() << ")" << endl;
+	chosenWeapon = staff;
 	break;
       case 2:
         cout << "Book of Spells (DPS:" << book_menu.item_bonus() << " DEF:" << book_menu.item_defense() << ")" << endl;
+	chosenWeapon = book_spells;
 	break; 
       case 3:
 	cout << "Sword (DPS:" << sword_menu.item_bonus() << " DEF:" << sword_menu.item_defense() << ")" << endl;
+	chosenWeapon = sword;
 	break;
       case 4:
 	cout << "Shield (DPS:" << shield_menu.item_bonus() << " DEF:" << shield_menu.item_defense() << ")" << endl;
+	chosenWeapon = shield;
 	break;
       default:
         LOG("Invalid Input")
@@ -97,10 +105,15 @@ void characterClass(){
      std::cin >> changeInput;
     }while(changeInput == 'Y' || changeInput == 'y');
 
+
+    // equip the choosen weapon to the player
+    player.equip(chosenWeapon);
+
+
     if(changeInput == 'N' || changeInput == 'n'){
 	// 'playGame()' comes from game.cpp
 	playGame();
-    }else{LOG("Invalid Input")}      
+    }else{LOG("Invalid Input")} 
 
 }
 
