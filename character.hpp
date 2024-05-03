@@ -22,24 +22,24 @@ public:
     virtual void attack(Character* target);
     virtual void special() = 0;
 
-    void set_attack(int atk){
-        atk = atk;
+    void set_attack(int new_atk){
+        atk = new_atk;
     } 
 
     int get_attack() {
         return atk;
     }
 
-    void set_defense(int def){
-        def = def;
+    void set_defense(int new_def){
+        def = new_def;
     } 
 
    int get_defense(){
 	return def;
     }
 
-    void set_hp(int hp){
-	hp = hp;
+    void set_hp(int new_hp){
+	hp = new_hp;
     }
 
     int get_hp() {
@@ -63,13 +63,13 @@ public:
         set_defense(currentEquipment->get_defense_bonus());
     }
 
-    void attack(character* target){
+    void attack(Character* target) override{
 	bool enemy;  // logic to determine if target is enemy
 
 	if(enemy){
-	   int updateHealth = get_hp() - get_attack();
+	   int updateHealth = target->get_hp() - get_attack();
 	   // apply damage to target
-	   set_hp(updateHealth);
+	   target->set_hp(updateHealth);
 	}
 
     }
