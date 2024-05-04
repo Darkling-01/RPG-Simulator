@@ -13,41 +13,26 @@ class Character {
 private:
     int atk;
     int def;
-    int hp;
+    int hp = 100;
 
 
 public:
 
     virtual void equip(Equip* equipment) = 0;
-    virtual void attack(Character* target);
+    virtual void attack(Character* target) {};
     virtual void special() = 0;
 
-    void set_attack(int new_atk){
-        atk = new_atk;
-    } 
+    void set_attack(int new_atk){ atk = new_atk; } 
+    int get_attack() { return atk; }
 
-    int get_attack() {
-        return atk;
-    }
+    void set_defense(int new_def){ def = new_def; } 
+    int get_defense(){ return def; }
 
-    void set_defense(int new_def){
-        def = new_def;
-    } 
+    void set_hp(int new_hp){ hp = new_hp; }
+    int get_hp() { return hp; }
 
-   int get_defense(){
-	return def;
-    }
-
-    void set_hp(int new_hp){
-	hp = new_hp;
-    }
-
-    int get_hp() {
-        return hp;
-    }
 
 };
-
 
 
 class Player : public Character{
@@ -55,12 +40,16 @@ class Player : public Character{
 private:
     Equip* currentEquipment;
 
-
 public:
-
+  
+    
+ 
     void equip(Equip* equipment) override{
+	currentEquipment = equipment;
 	set_attack(currentEquipment->get_attack_bonus());
         set_defense(currentEquipment->get_defense_bonus());
+	
+	std::cout << &currentEquipment;
     }
 
     void attack(Character* target) override{
@@ -72,6 +61,10 @@ public:
 	   target->set_hp(updateHealth);
 	}
 
+    }
+
+    void special() override {
+	std::cout << "Defualt Implementation\n";
     }
 
 };
