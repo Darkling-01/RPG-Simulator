@@ -11,16 +11,34 @@ using std::string;
 
 
 void dungeonDirection(){
-    // depending on the direction the player will find enemy 
-    // or find an empty cave and continue roaming...
-    cout << "just wait" << endl;
+    // this function will give a random direction to the player
+    // depending on the direction the player will have a possibility to find a  target
     
+    Boss boss;
+
+    int isFound, target;
+
+    // initalized random seed
+    srand(time(NULL));
+
+    // if both match then enemy is found
+    isFound = rand() % 4 + 1;
+    target = rand() % 4 + 1;
+
+    if(target == isFound){
+	boss.stats();
+    }
+    else{
+	cout << "Empty Area" << endl;
+    }
+
 
 }
 
 
 int fight(){
     // when enemy found, player can fight or run away...
+
 }
 
 

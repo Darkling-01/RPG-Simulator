@@ -14,7 +14,7 @@ class Character {
 private:
     int atk;
     int def;
-    int hp = 100;
+    int hp;
 
 public:
 
@@ -69,18 +69,24 @@ public:
 
 class Boss : public Character{
 
+private:
+     int hp = 250;
+     Equip* currentEquipment;
+
 public:
     virtual void equip(Equip* equipment) override{
-	//code here
+ 	//TODO equip weapon here
     }
     virtual void attack(Character* target) override{
-	
-	bool enemy = target;
-	set_attack(get_attack_bonus());
-	set_hp(250);
+	//TODO implement damage and attack moves here
+    }
+    void stats(){
+        set_hp(hp);
+	std::cout << "Boss Health: " << get_hp() << std::endl;
     }
 
     virtual void special() override{
+        //special attacks go here
 	std::cout << "Defualt Implementation\n";
     }
 
