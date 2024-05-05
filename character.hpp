@@ -4,6 +4,7 @@
 #include "equip.hpp"
 #include <iostream>
 
+
 int get_attack_bonus();
 int get_defense_bonus();
 
@@ -14,7 +15,6 @@ private:
     int atk;
     int def;
     int hp = 100;
-
 
 public:
 
@@ -27,12 +27,11 @@ public:
 
     void set_defense(int new_def){ def = new_def; } 
     int get_defense(){ return def; }
-
     void set_hp(int new_hp){ hp = new_hp; }
     int get_hp() { return hp; }
 
-
 };
+
 
 
 class Player : public Character{
@@ -40,16 +39,13 @@ class Player : public Character{
 private:
     Equip* currentEquipment;
 
-public:
-  
-    
+public: 
  
     void equip(Equip* equipment) override{
 	currentEquipment = equipment;
 	set_attack(currentEquipment->get_attack_bonus());
         set_defense(currentEquipment->get_defense_bonus());
-	
-	std::cout << &currentEquipment;
+ 
     }
 
     void attack(Character* target) override{
@@ -74,16 +70,19 @@ public:
 class Boss : public Character{
 
 public:
-    //Boss already has weapon equip
-    virtual void equip(Equip* equipment){
+    virtual void equip(Equip* equipment) override{
 	//code here
     }
-    virtual void attack(Character* target){
+    virtual void attack(Character* target) override{
 	
 	bool enemy = target;
 	set_attack(get_attack_bonus());
 	set_hp(250);
-    }    
+    }
+
+    virtual void special() override{
+	std::cout << "Defualt Implementation\n";
+    }
 
 };
 

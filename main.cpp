@@ -28,7 +28,7 @@ private:
 public:
     // contructor initializes the equip pointer
     Menu(Equip* item) : equip(item) {}
-
+    
     //descontructor deletes dynamically allocated memory. Prevents memory leaks
     ~Menu() {
 	delete equip;
@@ -56,7 +56,6 @@ public:
 
 
 void characterClass(){
-
     Player player;
 
     int response;
@@ -72,12 +71,14 @@ void characterClass(){
     Menu sword_menu(sword);
     Menu shield_menu(shield);
 
-
     Equip* chosenWeapon = nullptr;
 
-    do{ 
-    LOG("Choose Your Class")
-    LOG("1 - Staff\n2 - Book of Spells\n3 - Sword\n4 - Shield")   
+    do{
+    LOG("--------------------------------------------")
+    LOG("|            Choose Your Class             |")
+    LOG("|    1-Staff  2-Book  3-Sword  4-Shield    |")
+    LOG("--------------------------------------------")
+
     std::cin >> response;
     
     switch(response){
@@ -87,7 +88,7 @@ void characterClass(){
 	break;
       case 2:
         cout << "Book of Spells (DPS:" << book_menu.item_bonus() << " DEF:" << book_menu.item_defense() << ")" << endl;
-	chosenWeapon = book_spells;
+	chosenWeapon = book_spells;	
 	break; 
       case 3:
 	cout << "Sword (DPS:" << sword_menu.item_bonus() << " DEF:" << sword_menu.item_defense() << ")" << endl;
@@ -104,11 +105,10 @@ void characterClass(){
      LOG("Do you want to pick a differnt class?(Y/N)")
      std::cin >> changeInput;
     }while(changeInput == 'Y' || changeInput == 'y');
+    
 
-
-    // equip the choosen weapon to the player
+    //equips weapon to player in class 
     player.equip(chosenWeapon);
-
 
     if(changeInput == 'N' || changeInput == 'n'){
 	// 'playGame()' comes from game.cpp
@@ -139,17 +139,20 @@ int main()
 {  
     int rpg_class;
     
-    
-    LOG("WELCOME TO RPG-SIMULATOR")
-    LOG("Options:\n1 - Game\n2 - Story\n3 - Exit\n")
+    LOG("--------------------------------------------")
+    LOG("|         WELCOME TO RPG-SIMULATOR         |")
+    LOG("|     Options: 1-Game  2-Story  3-Exit     |")
+    LOG("--------------------------------------------")
     std::cin >> rpg_class;
-       
+
     switch(rpg_class){
       case 1:
 	characterClass();
 	break;
       case 2:
 	gameStory();
+	cout << endl;
+	main();
 	break;
       case 3:
 	exit(0);
