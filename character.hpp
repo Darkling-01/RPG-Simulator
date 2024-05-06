@@ -5,11 +5,6 @@
 #include <iostream>
 
 
-int get_attack_bonus();
-int get_defense_bonus();
-
-
-
 class Character {
 private:
     int atk;
@@ -27,6 +22,7 @@ public:
 
     void set_defense(int new_def){ def = new_def; } 
     int get_defense(){ return def; }
+
     void set_hp(int new_hp){ hp = new_hp; }
     int get_hp() { return hp; }
 
@@ -76,13 +72,20 @@ private:
 public:
     virtual void equip(Equip* equipment) override{
  	//TODO equip weapon here
+	currentEquipment = equipment;
+	//set_attack(currentEquipment->get_attack_bonus);
     }
+    
     virtual void attack(Character* target) override{
 	//TODO implement damage and attack moves here
     }
+
     void stats(){
+	Sythe sythe;
         set_hp(hp);
-	std::cout << "Boss Health: " << get_hp() << std::endl;
+	std::cout << "\n\nBoss Health: " << get_hp() << "\n" << std::endl;
+    	std::cout << "attack bonus: " << sythe.get_attack_bonus() << std::endl;
+	std::cout << "defense bonus: " << sythe.get_defense_bonus() << "\n" << std::endl;
     }
 
     virtual void special() override{
