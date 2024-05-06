@@ -10,6 +10,9 @@ using std::endl;
 using std::string;
 
 
+void fight();
+
+
 void dungeonDirection(){
     // this function will give a random direction to the player
     // depending on the direction the player will have a possibility to find a  target
@@ -22,22 +25,31 @@ void dungeonDirection(){
     srand(time(NULL));
 
     // if both match then enemy is found
-    isFound = rand() % 4 + 1;
-    target = rand() % 4 + 1;
+    isFound = rand() % 6 + 1;
+    target = rand() % 6 + 1;
 
     if(target == isFound){
 	boss.stats();
+	fight();
     }
     else{
-	cout << "Empty Area" << endl;
+	cout << "\n\nEmpty Area\n\n" << endl;
     }
 
 
 }
 
 
-int fight(){
-    // when enemy found, player can fight or run away...
+void fight(){
+    // when enemy is found, player can fight or run away...
+    string response;
+    cout << "Do you want to fight or run away?\n";
+    std::cin >> response;
+
+    if(response == "fight"){
+	cout << "fight...\n";
+    }
+    else if(response == "run"){ cout << "Escaped!" << endl; }
 
 }
 
@@ -45,14 +57,16 @@ int fight(){
 void playGame(){
 
     char response;
-
-    cout << "Welcoome adventure. ";
+    cout << "--------------------------------------------" << endl;
+    cout << "|            Welcoome Adventure            |" << endl;;
 
     while(response != 'q' && response != 'Q'){
 
-	cout << "Chose a path within the dungeon..(press 'q' or 'Q' to quit program)";
-	cout << endl;
-        cout << "Right = r\nLeft = l" <<endl;
+	cout << "--------------------------------------------" << endl;
+	cout << "|     Chose a path within the dungeon.     |" << endl;
+	cout << "|    (press 'q' or 'Q' to quit program)    |" << endl;
+	cout << "--------------------------------------------" << endl;
+        cout << "r = Right OR l = Left: ";
 	std::cin >> response;
 
 	if(response == 'l'){ 
@@ -63,7 +77,7 @@ void playGame(){
 	}
 	else if(response == 'q' || response == 'Q') { break; }
 
-        else{cout << "Invalid";}
+        else{cout << "\n\nInvalid. Try Again\n\n";}
 
     }
     
