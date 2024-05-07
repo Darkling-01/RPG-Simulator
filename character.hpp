@@ -4,6 +4,9 @@
 #include "equip.hpp"
 #include <iostream>
 
+using std::cout;
+using std::endl;
+
 
 class Character {
 private:
@@ -41,12 +44,12 @@ public:
 	currentEquipment = equipment;
 	set_attack(currentEquipment->get_attack_bonus());
         set_defense(currentEquipment->get_defense_bonus());
- 
-    }
+
+    }    
 
     void attack(Character* target) override{
 	bool enemy;  // logic to determine if target is enemy
-
+		
 	if(enemy){
 	   int updateHealth = target->get_hp() - get_attack();
 	   // apply damage to target
@@ -70,25 +73,36 @@ private:
      Equip* currentEquipment;
 
 public:
-    virtual void equip(Equip* equipment) override{
+    void equip(Equip* equipment) override{
  	//TODO equip weapon here
 	currentEquipment = equipment;
-	//set_attack(currentEquipment->get_attack_bonus);
+	set_attack(currentEquipment->get_attack_bonus());
+	set_defense(currentEquipment->get_defense_bonus());	
+   
+   }
+
+    void equip(){
+	Equip* sythe = new Sythe();
+	equip(sythe);
+
+	delete sythe;
     }
-    
-    virtual void attack(Character* target) override{
+   
+    void attack(Character* target) override{
 	//TODO implement damage and attack moves here
+    		
     }
 
     void stats(){
 	Sythe sythe;
         set_hp(hp);
+
 	std::cout << "\n\nBoss Health: " << get_hp() << "\n" << std::endl;
     	std::cout << "attack bonus: " << sythe.get_attack_bonus() << std::endl;
 	std::cout << "defense bonus: " << sythe.get_defense_bonus() << "\n" << std::endl;
     }
 
-    virtual void special() override{
+    void special() override{
         //special attacks go here
 	std::cout << "Defualt Implementation\n";
     }

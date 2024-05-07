@@ -25,8 +25,8 @@ void dungeonDirection(){
     srand(time(NULL));
 
     // if both match then enemy is found
-    isFound = rand() % 6 + 1;
-    target = rand() % 6 + 1;
+    isFound = rand() % 4 + 1;
+    target = rand() % 4 + 1;
 
     if(target == isFound){
 	boss.stats();
@@ -42,16 +42,32 @@ void dungeonDirection(){
 
 void fight(){
     // when enemy is found, player can fight or run away...
+    Player player;
+    Boss boss;
+
     string response;
+    int hit;
+
     cout << "Do you want to fight or run away?\n";
     std::cin >> response;
 
     if(response == "fight"){
-	cout << "fight...\n";
+	cout << "-----------------" << endl;
+	boss.equip();			
     }
-    else if(response == "run"){ cout << "Escaped!" << endl; }
+
+    else if(response == "run"){ 
+
+	srand(time(NULL));
+	hit = rand() % 2 + 1;
+
+	if (hit == 1){ cout << "\n-> Damage took when escaping." << endl; }
+	
+	else{ cout << "\n-> Took no damage when escaping." << endl; }
+    }
 
 }
+
 
 
 void playGame(){
