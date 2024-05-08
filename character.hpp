@@ -39,7 +39,7 @@ private:
     Equip* currentEquipment;
 
 public: 
- 
+
     void equip(Equip* equipment) override{
 	currentEquipment = equipment;
 	set_attack(currentEquipment->get_attack_bonus());
@@ -48,6 +48,7 @@ public:
     }    
 
     void attack(Character* target) override{
+	Boss boss;
 	bool enemy;  // logic to determine if target is enemy
 		
 	if(enemy){
@@ -69,10 +70,10 @@ public:
 class Boss : public Character{
 
 private:
-     int hp = 250;
      Equip* currentEquipment;
 
 public:
+
     void equip(Equip* equipment) override{
  	//TODO equip weapon here
 	currentEquipment = equipment;
@@ -80,7 +81,8 @@ public:
 	set_defense(currentEquipment->get_defense_bonus());	
    
    }
-
+    //overloading function
+    // equip 'sythe' weapon to boss
     void equip(){
 	Equip* sythe = new Sythe();
 	equip(sythe);
@@ -89,17 +91,15 @@ public:
     }
    
     void attack(Character* target) override{
-	//TODO implement damage and attack moves here
-    		
-    }
+	Player player;
+	bool enemy;
+        equip();
 
-    void stats(){
-	Sythe sythe;
-        set_hp(hp);
-
-	std::cout << "\n\nBoss Health: " << get_hp() << "\n" << std::endl;
-    	std::cout << "attack bonus: " << sythe.get_attack_bonus() << std::endl;
-	std::cout << "defense bonus: " << sythe.get_defense_bonus() << "\n" << std::endl;
+	if(enemy){
+	   int updateHealth = target->get_hp() - get_attack();
+	   target->set_hp(updateHealth);
+	   cout << updateHealth << endl;
+	}
     }
 
     void special() override{

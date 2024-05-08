@@ -9,8 +9,12 @@ using std::cout;
 using std::endl;
 using std::string;
 
+constexpr int PLAYER_HEALTH = 100;
+constexpr int BOSS_HEALTH = 200;
+
 
 void fight();
+void boss_stats();
 
 
 void dungeonDirection(){
@@ -29,7 +33,7 @@ void dungeonDirection(){
     target = rand() % 4 + 1;
 
     if(target == isFound){
-	boss.stats();
+	boss_stats();
 	fight();
     }
     else{
@@ -38,6 +42,17 @@ void dungeonDirection(){
 
 
 }
+void boss_stats(){
+    Boss boss;
+    boss.set_hp(BOSS_HEALTH);
+    Sythe sythe;
+
+    cout << "\nHealth: " << boss.get_hp() << endl;
+    cout << "attack bonus: " << sythe.get_attack_bonus() << endl;
+    cout << "defense bonus: " << sythe.get_defense_bonus() << "\n" << endl;
+
+}
+
 
 
 void fight(){
@@ -45,15 +60,20 @@ void fight(){
     Player player;
     Boss boss;
 
+    player.set_hp(PLAYER_HEALTH);
+    boss.set_hp(BOSS_HEALTH);
+
     string response;
-    int hit;
+    int hit, attack;
 
     cout << "Do you want to fight or run away?\n";
     std::cin >> response;
 
     if(response == "fight"){
+
 	cout << "-----------------" << endl;
-	boss.equip();			
+	boss.attack(&player);   // this will call the attack function of the boss class
+
     }
 
     else if(response == "run"){ 
@@ -67,7 +87,6 @@ void fight(){
     }
 
 }
-
 
 
 void playGame(){
