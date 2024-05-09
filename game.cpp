@@ -60,19 +60,25 @@ void fight(){
     Player player;
     Boss boss;
 
+    // setting the health to player and enemy
     player.set_hp(PLAYER_HEALTH);
     boss.set_hp(BOSS_HEALTH);
 
     string response;
-    int hit, attack;
+    int hit;
+    char quitFight;
 
     cout << "Do you want to fight or run away?\n";
     std::cin >> response;
 
     if(response == "fight"){
-
-	cout << "-----------------" << endl;
+	// TODO create a loop to ask player to hit enemy or continuous loop without asking
+	cout << "################" << endl;
+	cout << "Player Health: ";
 	boss.attack(&player);   // this will call the attack function of the boss class
+	cout << "Enemy Health: ";
+	player.attack(&boss);
+        cout << "################" << endl;
 
     }
 

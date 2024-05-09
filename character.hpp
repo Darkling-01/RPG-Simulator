@@ -45,16 +45,17 @@ public:
 	set_attack(currentEquipment->get_attack_bonus());
         set_defense(currentEquipment->get_defense_bonus());
 
-    }    
+    }
 
-    void attack(Character* target) override{
-	Boss boss;
+    void attack(Character* target) override{	
 	bool enemy;  // logic to determine if target is enemy
-		
+	int updateHealth;
+
 	if(enemy){
-	   int updateHealth = target->get_hp() - get_attack();
+	   updateHealth = target->get_hp() - target->get_attack();
 	   // apply damage to target
 	   target->set_hp(updateHealth);
+	   cout << updateHealth << endl;
 	}
 
     }
@@ -75,7 +76,6 @@ private:
 public:
 
     void equip(Equip* equipment) override{
- 	//TODO equip weapon here
 	currentEquipment = equipment;
 	set_attack(currentEquipment->get_attack_bonus());
 	set_defense(currentEquipment->get_defense_bonus());	
@@ -91,12 +91,12 @@ public:
     }
    
     void attack(Character* target) override{
-	Player player;
 	bool enemy;
+	int updateHealth;
         equip();
 
 	if(enemy){
-	   int updateHealth = target->get_hp() - get_attack();
+	   updateHealth = target->get_hp() - get_attack();
 	   target->set_hp(updateHealth);
 	   cout << updateHealth << endl;
 	}

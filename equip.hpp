@@ -2,9 +2,6 @@
 #define EQUIP_HPP
 
 #include <iostream>
-#include <string>
-
-using std::string;
 
 
 class Equip {
@@ -51,21 +48,21 @@ public:
 class Sword : public Equip{
 public:
     int get_attack_bonus() const override{
-        return 27;
+        return 20;
     }
     int get_defense_bonus() const override{
-        return 18;
+        return 17;
     }
 };
 
 //intended for boss
-class sythe : public Equip{
+class Sythe : public Equip{
 public:
     int get_attack_bonus() const override{
-        return 28;
+        return 26;
     }
     int get_defense_bonus() const override{
-        return 24;
+        return 20;
     }
 
 };

@@ -49,7 +49,6 @@ public:
       }
       else{return 0;}
      }
-
            
 
 };
@@ -98,6 +97,7 @@ void characterClass(){
 	cout << "Shield (DPS:" << shield_menu.item_bonus() << " DEF:" << shield_menu.item_defense() << ")" << endl;
 	chosenWeapon = shield;
 	break;
+      case 5:
       default:
         LOG("Invalid Input")
 	break;
