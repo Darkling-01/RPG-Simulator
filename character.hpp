@@ -55,7 +55,6 @@ public:
 	   updateHealth = target->get_hp() - target->get_attack();
 	   // apply damage to target
 	   target->set_hp(updateHealth);
-	   cout << updateHealth << endl;
 	}
 
     }
@@ -98,7 +97,6 @@ public:
 	if(enemy){
 	   updateHealth = target->get_hp() - get_attack();
 	   target->set_hp(updateHealth);
-	   cout << updateHealth << endl;
 	}
     }
 

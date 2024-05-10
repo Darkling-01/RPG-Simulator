@@ -66,18 +66,21 @@ void fight(){
 
     string response;
     int hit;
-    char quitFight;
 
+
+    do{
+    
     cout << "Do you want to fight or run away?\n";
     std::cin >> response;
 
     if(response == "fight"){
-	// TODO create a loop to ask player to hit enemy or continuous loop without asking
+	
 	cout << "################" << endl;
-	cout << "Player Health: ";
 	boss.attack(&player);   // this will call the attack function of the boss class
-	cout << "Enemy Health: ";
 	player.attack(&boss);
+	
+	cout << "Player Health: " << player.get_hp() << endl;
+	cout << "Boss Health: " << boss.get_hp() << endl;
         cout << "################" << endl;
 
     }
@@ -87,10 +90,20 @@ void fight(){
 	srand(time(NULL));
 	hit = rand() % 2 + 1;
 
-	if (hit == 1){ cout << "\n-> Damage took when escaping." << endl; }
+	if (hit == 1){ 
+	   boss.attack(&player);
+	   cout << "\n-> Damage took when escaping: " << player.get_hp() << endl;    
+        }
 	
 	else{ cout << "\n-> Took no damage when escaping." << endl; }
-    }
+      }
+
+   }while(player.get_hp() > 0 && boss.get_hp() > 0 && response != "run");
+
+
+    if(player.get_hp() <= 0){ cout << "Game Over! You Died!" << endl; }
+
+    else if(boss.get_hp() <= 0){ cout << "Congrats! You Defeated the Boss!" << endl;}
 
 }
 
