@@ -15,6 +15,7 @@ constexpr int BOSS_HEALTH = 200;
 
 void fight();
 void boss_stats();
+int main();
 
 
 void dungeonDirection(){
@@ -63,22 +64,21 @@ void fight(){
     // setting the health to player and enemy
     player.set_hp(PLAYER_HEALTH);
     boss.set_hp(BOSS_HEALTH);
-
+ 
+    
     string response;
     int hit;
 
-
     do{
-    
+    boss.attack(&player);
+    player.attack(&boss);
+
     cout << "Do you want to fight or run away?\n";
     std::cin >> response;
 
     if(response == "fight"){
-	
-	cout << "################" << endl;
-	boss.attack(&player);   // this will call the attack function of the boss class
-	player.attack(&boss);
-	
+
+	cout << "################" << endl;	
 	cout << "Player Health: " << player.get_hp() << endl;
 	cout << "Boss Health: " << boss.get_hp() << endl;
         cout << "################" << endl;
@@ -91,17 +91,16 @@ void fight(){
 	hit = rand() % 2 + 1;
 
 	if (hit == 1){ 
-	   boss.attack(&player);
-	   cout << "\n-> Damage took when escaping: " << player.get_hp() << endl;    
+	   cout << "\n-> Damage took when escaping: " << player.get_hp()  << endl;
         }
 	
 	else{ cout << "\n-> Took no damage when escaping." << endl; }
       }
 
-   }while(player.get_hp() > 0 && boss.get_hp() > 0 && response != "run");
+   }while(player.get_hp() > 0 && player.get_hp() > 0 && response != "run");
 
 
-    if(player.get_hp() <= 0){ cout << "Game Over! You Died!" << endl; }
+    if(player.get_hp() <= 0){ cout << "Game Over! You Died!" << endl; main();}
 
     else if(boss.get_hp() <= 0){ cout << "Congrats! You Defeated the Boss!" << endl;}
 
