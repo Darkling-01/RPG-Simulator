@@ -9,7 +9,4 @@ The purpose of this project is to get familiar with virutal functions, how to pr
 
 # Things To Implement
 
-- List all weapons possible to equip
 - Display health and score
-- Prompt messages for the user to decide where to go
-- Work on enemy characters
