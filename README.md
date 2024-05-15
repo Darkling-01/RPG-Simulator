@@ -10,3 +10,8 @@ The purpose of this project is to get familiar with virutal functions, how to pr
 # Things To Implement
 
 - Display health and score
+
+# Issues
+- attack and health function is not working properly
+- user weapon is not being registered correctly and is being replaced by enemy weapon
+- health variable keeps reseting after finding new enemy
